@@ -30,7 +30,12 @@ float waveElevation(vec3 position)
 void main()
 {
     // Base Position
+     // Base position
+    float shift = 0.01;
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    vec3 modelPositionA = modelPosition.xyz + vec3(shift, 0.0, 0.0);
+    vec3 modelPositionB = modelPosition.xyz + vec3(0.0, 0.0, - shift);
+    
 
     // Elevation
     float elevation = waveElevation(modelPosition.xyz);
