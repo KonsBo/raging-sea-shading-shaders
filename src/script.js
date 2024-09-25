@@ -18,6 +18,11 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 // scene.background = new THREE.Color("rgb(10%,10%	,44%)");
 
+// Axes helper
+const axesHelper = new THREE.AxesHelper();
+axesHelper.position.y += 0.25;
+scene.add(axesHelper);
+
 /**
  * Water
  */
