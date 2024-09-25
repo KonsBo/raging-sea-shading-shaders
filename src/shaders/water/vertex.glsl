@@ -14,21 +14,26 @@ varying vec3 vPosition;
 
 #include ../includes/perlinClassic3D.glsl
 
-void main()
+float waveElevation(vec3 position)
 {
-    // Base Position
-    vec4 modelPosition = modelMatrix * vec4(vPosition, 1.0);
-
-    // Elevation
-    float elevation = sin(modelPosition.x * uBigWavesFrequency.x + uTime * uBigWavesSpeed) *
-                      sin(modelPosition.z * uBigWavesFrequency.y + uTime * uBigWavesSpeed) *
+ float elevation = sin(position.x * uBigWavesFrequency.x + uTime * uBigWavesSpeed) *
+                      sin(position.z * uBigWavesFrequency.y + uTime * uBigWavesSpeed) *
                       uBigWavesElevation;
 
     for(float i = 1.0; i <= uSmallIterations; i++)
     {
-        elevation -= abs(perlinClassic3D(vec3(modelPosition.xz * uSmallWavesFrequency * i, uTime * uSmallWavesSpeed)) * uSmallWavesElevation / i);
+        elevation -= abs(perlinClassic3D(vec3(position.xz * uSmallWavesFrequency * i, uTime * uSmallWavesSpeed)) * uSmallWavesElevation / i);
     }
-    
+    return elevation;
+}
+
+void main()
+{
+    // Base Position
+    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+
+    // Elevation
+    float elevation = waveElevation(modelPosition.xyz);
     modelPosition.y += elevation;
 
     //Final Position

@@ -16,7 +16,7 @@ void main()
     vec3 normal = normalize(vNormal);
     
     //Base Color
-       float mixStrength = (vElevation + uColorOffset) * uColorMultiplier;
+    float mixStrength = (vElevation + uColorOffset) * uColorMultiplier;
     mixStrength = smoothstep(0.0, 1.0, mixStrength);
     vec3 color = mix(uDepthColor, uSurfaceColor, mixStrength);
 
@@ -35,8 +35,7 @@ void main()
     color *= light;
     
     //Final Color
-    gl_FragColor = vec4(color, 1.0);
-    
+    gl_FragColor = vec4(normal, 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
 }
