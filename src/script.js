@@ -19,9 +19,9 @@ const scene = new THREE.Scene();
 // scene.background = new THREE.Color("rgb(10%,10%	,44%)");
 
 // Axes helper
-const axesHelper = new THREE.AxesHelper();
-axesHelper.position.y += 0.25;
-scene.add(axesHelper);
+// const axesHelper = new THREE.AxesHelper();
+// axesHelper.position.y += 0.25;
+// scene.add(axesHelper);
 
 /**
  * Water
@@ -151,6 +151,7 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
 
   // Update renderer
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
