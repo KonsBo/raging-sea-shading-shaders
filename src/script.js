@@ -16,13 +16,13 @@ const canvas = document.querySelector("canvas.webgl");
 
 // Scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color("steelblue");
+scene.background = new THREE.Color("rgb(10%,10%	,44%)");
 
 /**
  * Water
  */
 // Geometry
-const waterGeometry = new THREE.PlaneGeometry(4, 4, 512, 512);
+const waterGeometry = new THREE.PlaneGeometry(4, 8, 512, 512);
 
 // Colors
 debugObject.depthColor = "#ff4000";
