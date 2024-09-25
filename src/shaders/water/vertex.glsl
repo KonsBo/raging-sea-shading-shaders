@@ -9,13 +9,15 @@ uniform float uSmallWavesSpeed;
 uniform float uSmallIterations;
 
 varying float vElevation;
+varying vec3 vNormal;
+varying vec3 vPosition;
 
 #include ../includes/perlinClassic3D.glsl
 
 void main()
 {
     // Base Position
-    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    vec4 modelPosition = modelMatrix * vec4(vPosition, 1.0);
 
     // Elevation
     float elevation = sin(modelPosition.x * uBigWavesFrequency.x + uTime * uBigWavesSpeed) *
@@ -36,4 +38,6 @@ void main()
 
     //Varyings
     vElevation = elevation;
+    vNormal = (modelMatrix * vec4(normal, 0.0)).xyz;
+    vPosition = modelPosition.xyz;
 }
