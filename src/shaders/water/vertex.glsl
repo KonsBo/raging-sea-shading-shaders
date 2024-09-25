@@ -40,6 +40,8 @@ void main()
     // Elevation
     float elevation = waveElevation(modelPosition.xyz);
     modelPosition.y += elevation;
+    modelPositionA.y += waveElevation(modelPositionA);
+    modelPositionB.y += waveElevation(modelPositionB);
 
     //Final Position
     vec4 viewPosition = viewMatrix * modelPosition;
