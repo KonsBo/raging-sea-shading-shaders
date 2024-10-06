@@ -21,7 +21,7 @@ void main()
     vec3 color = mix(uDepthColor, uSurfaceColor, mixStrength);
 
      // Light
-    vec3 light = vec3(0.0);
+    vec3 light = vec3(0.0);     
 
     light += pointLight(
         vec3(1.0),            // Light color
@@ -31,7 +31,7 @@ void main()
         viewDirection,        // View direction
         30.0,                // Specular power
         vPosition,          //Position
-        0.95                //Decay
+        0.50               //Decay
     );
 
     color *= light;
